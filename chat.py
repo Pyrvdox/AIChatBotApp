@@ -17,4 +17,6 @@ def conersation_hander():
             break
         result = chain.invoke({"context": " ", "question": " "})
         print("Bot: ", result)
-        
+         
+if __name__=="__main__":
+    conersation_hander()
