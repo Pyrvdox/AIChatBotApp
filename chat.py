@@ -7,3 +7,14 @@ model = OllamaLLM(model="llama3")
 
 model.invoke(input="")
 prompt = ChatPromptTemplate.from_template(ai_template)
+chain = prompt | model
+
+def conersation_hander():
+    context = ""
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == "exit":
+            break
+        result = chain.invoke({"context": " ", "question": " "})
+        print("Bot: ", result)
+        
