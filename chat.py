@@ -9,13 +9,13 @@ model.invoke(input="")
 prompt = ChatPromptTemplate.from_template(ai_template)
 chain = prompt | model
 
-def conersation_hander():
+def conersation_hander(input_question):
     context = ""
     while True:
-        user_input = input("You: ")
+        user_input = input_question
         if user_input.lower() == "exit":
             break
-        result = chain.invoke({"context": " ", "question": " "})
+        result = chain.invoke({"context": " ", "question": user_input})
         print("Bot: ", result)
          
 if __name__=="__main__":
