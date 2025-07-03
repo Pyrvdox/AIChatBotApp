@@ -1,5 +1,15 @@
 from flask import Flask, render_template
-from chat import conersation_hander
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import ChatPromptTemplate
+
+template = """
+Answer the question below.
+There is the conversation history : {context}
+Question: {question}
+Answer:
+"""
+
+model = OllamaLLM(model="moondream")
 
 app = Flask(__name__)
 
