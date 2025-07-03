@@ -1,29 +1,14 @@
 from flask import Flask, render_template
-from langchain_ollama import OllamaLLM
-from langchain_core.prompts import ChatPromptTemplate
+#from aichat import conversation_handler
 
-ai_template = """
-Answer the question below.
-There is the conversation history : {context}
-Question: {question}
-Answer:
-"""
+app = Flask(__name__)
 
-model = OllamaLLM(model="phi3")
-prompt = ChatPromptTemplate.from_template(ai_template)
-chain = prompt | model
+@app.route("/")           
+def home():
+    return render_template("index.html")           
 
-
-def conversation_handler():
-    context = ""
-    while True:
-        user_input = input("you: ")
-        if user_input.lower() == "exit":
-            break
-        
-        result = chain.invoke({"context": context, "question": user_input})
-        print("Bot:  ",result)
-        context += f"\n User: {user_input} \nAI: {result}"
 
 if __name__ == "__main__":
-    conversation_handler()
+    app.run(debug=True) 
+
+#conversation_handler()

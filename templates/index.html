@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-    <title>Odpowiedź AI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
 </head>
 <body>
-    <h2>Twoje pytanie:</h2>
-    <p>{{ user_input }}</p>
+  <h1>Chat</h1>
+  <div id="chat">
+    <div><strong>Bot:</strong> Hello!</div>
+    
+  </div>
 
-    <h2>Odpowiedź AI:</h2>
-    <p>{{ bot_response }}</p>
-
-    <a href="/">Zadaj inne pytanie</a>
+  <form action="/chat" method="post">
+    <input type="text" name="message" placeholder="Napisz wiadomość..." required>
+    <button type="submit">Wyślij</button>
+  </form>
 </body>
 </html>
