@@ -7,12 +7,14 @@
 </head>
 <body>
   <h1>Chat</h1>
+
   <div id="chat">
-    <div><strong>Bot:</strong> Hello!</div>
-    
+    {% for person, text in history %}
+      <div><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
+    {% endfor %}
   </div>
 
-  <form action="/chat" method="post">
+  <form action="/" method="post">
     <input type="text" name="message" placeholder="Napisz wiadomość..." required>
     <button type="submit">Wyślij</button>
   </form>
