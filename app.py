@@ -9,9 +9,21 @@ Question: {question}
 Answer:
 """
 
-model = OllamaLLM(model="moondream")
+model = OllamaLLM(model="phi3")
 prompt = ChatPromptTemplate.from_template(ai_template)
 chain = prompt | model
 
-result = chain.invoke({"context": "", "question": "Hi!"})
-print("Bot:  ",result)
+
+def conversation_handler():
+    context = ""
+    while True:
+        user_input = input("you: ")
+        if user_input.lower() == "exit":
+            break
+        
+        result = chain.invoke({"context": context, "question": user_input})
+        print("Bot:  ",result)
+        context += f"\n User: {user_input} \nAI: {result}"
+
+if __name__ == "__main__":
+    conversation_handler()
