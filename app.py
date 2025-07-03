@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 from aichat import conversation_handler
 import os
 
@@ -14,6 +14,10 @@ def home():
               
     if request.method == "POST":
         user_input = request.form["message"]
+        if user_input.lower() == "clear":
+            session.pop("history", None)
+            return redirect("/")
+        
         history.append(("user", user_input))
 
         conversation_context = "\n".join(f"{person}: {text}" for person, text in history)
