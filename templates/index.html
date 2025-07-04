@@ -6,17 +6,19 @@
   <title>Chat</title>
 </head>
 <body>
-  <h1>Chat</h1>
-
-  <div id="chat">
-    {% for person, text in history %}
-      <div><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
-    {% endfor %}
-  </div>
-
-  <form action="/" method="post">
-    <input type="text" name="message" placeholder="Napisz wiadomość..." required>
-    <button type="submit">Wyślij</button>
-  </form>
+    <div>
+        <h1>Chat</h1>
+    </div>
+    <div id="chat">
+        {% for person, text in history %}
+        <div><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
+        {% endfor %}
+    </div>
+    <div>
+        <form action="/" method="post">
+            <input type="text" name="message" placeholder="Napisz wiadomość..." required>
+            <button type="submit">Wyślij</button>
+        </form>
+    </div>
 </body>
 </html>
