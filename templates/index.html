@@ -8,11 +8,17 @@
 </head>
 <body>
     <div>
-        <h1>AIChat</h1>
+        <span>
+            <h1>AIChat</h1>
+        </span>
+        <span>
+            <button>Reset</button>
+            <button>Help</button>
+        </span>
     </div>
     <div id="chat">
         {% for person, text in history %}
-        <div><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
+        <div id="chat-line"><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
         {% endfor %}
     </div>
     <div>
