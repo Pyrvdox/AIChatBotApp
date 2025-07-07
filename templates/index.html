@@ -7,16 +7,14 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-    <div>
+    <div name="app-header">
         <span>
-            <h1>AIChat</h1>
-        </span>
-        <span>
-            <button>Reset</button>
             <button>Help</button>
+            <h1>AIChat</h1>
+            <button>Reset</button>
         </span>
     </div>
-    <div id="chat">
+    <div name="chat-box">
         {% for person, text in history %}
         <div id="chat-line"><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
         {% endfor %}
