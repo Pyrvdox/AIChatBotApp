@@ -16,7 +16,7 @@
     </div>
     <div name="chat-box">
         {% for person, text in history %}
-        <div id="chat-line"><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
+        <div name="chat-line"><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
         {% endfor %}
     </div>
     <div>
