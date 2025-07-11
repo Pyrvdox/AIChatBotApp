@@ -7,23 +7,27 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-    <div name="app-header">
-        <span>
-            <button>Help</button>
-            <h1>AIChat</h1>
-            <button>Reset</button>
-        </span>
+  <div name="app-header">
+    <span>
+      <button>Help</button>
+      <h1>AIChat</h1>
+      <button>Reset</button>
+    </span>
+  </div>
+
+  <div name="chat-box">
+    {% for person, text in history %}
+    <div name="chat-line" class="{{ 'user' if person.lower() == 'user' else 'bot' }}">
+      <strong>{{ person|capitalize }}:</strong> {{ text }}
     </div>
-    <div name="chat-box">
-        {% for person, text in history %}
-        <div name="chat-line"><strong>{{ person|capitalize }}:</strong> {{ text }}</div>
-        {% endfor %}
-    </div>
-    <div>
-        <form action="/" method="post">
-            <input type="text" name="message" placeholder="Napisz wiadomość..." required>
-            <button type="submit">Wyślij</button>
-        </form>
-    </div>
+    {% endfor %}
+  </div>
+
+  <div>
+    <form action="/" method="post">
+      <input type="text" name="message" placeholder="Napisz wiadomość..." required>
+      <button type="submit">Wyślij</button>
+    </form>
+  </div>
 </body>
 </html>
