@@ -15,12 +15,16 @@
     </span>
   </div>
 
-  <div name="chat-box">
+  <div name="chat-box" style="{% if not history %}display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%;{% endif %}">
+    {% if not history %}
+    <p style="font-size: 1.5em; color: #888;">Hello, let's chat :D</p>
+    {% else %}
     {% for person, text in history %}
     <div name="chat-line" class="{{ 'user' if person.lower() == 'user' else 'bot' }}">
       <strong>{{ person|capitalize }}:</strong> {{ text }}
     </div>
     {% endfor %}
+    {% endif %}
   </div>
 
   <div name="form-box">
